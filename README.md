@@ -44,7 +44,7 @@ Bem-vindo ao **Gerenciador de Tarefas**! Este é um aplicativo para organizar su
 - O diretório \`src/main/java\` contém o código Java, incluindo os controladores e a lógica do aplicativo.
 - O diretório \`src/main/resources\` contém os arquivos de configuração e os templates Thymeleaf.
 
-  ![Caso de Uso e Diagrama de Classe do projeto](gerenciador-de-tarefas/diagrams/diagram_gerenciador_tarefas.png)
+  ![Caso de Uso e Diagrama de Classe do projeto](br.com.ygor.gerenciador/br.com.ygor.gerenciador/diagrams/diagram_gerenciador_tarefas.png)
 
 ## Contribuição
 
