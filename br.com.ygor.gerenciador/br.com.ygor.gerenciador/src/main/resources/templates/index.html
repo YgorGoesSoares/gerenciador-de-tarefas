@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Gerenciador de Tarefas</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Tarefas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/concluidas">Tarefas Concluídas</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container mt-5">
+    <h1 class="text-center">Gerenciador de Tarefas</h1>
+
+    <p class="text-center">Bem-vindo ao Gerenciador de Tarefas, uma aplicação simples para organizar suas tarefas pendentes.</p>
+    <p class="text-center">Você pode adicionar novas tarefas, marcá-las como concluídas e excluí-las.</p>
+
+    <!-- Formulário para adicionar tarefa -->
+    <form action="/adicionar" method="post" class="mb-3">
+        <div class="input-group">
+            <input type="text" class="form-control" name="descricao" placeholder="Nova Tarefa">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Adicionar</button>
+            </div>
+        </div>
+    </form>
+    <ul class="list-group">
+        <li th:each="tarefaPendenteItem : ${tarefas}" class="list-group-item d-flex justify-content-between align-items-center">
+            <span th:text="${tarefaPendenteItem.tarefa.descricao}"></span>
+            <div>
+                <!-- Botão para concluir tarefa -->
+                <form th:action="@{/concluir}" method="post" class="d-inline mr-2">
+                    <input type="hidden" name="id" th:value="${tarefaPendenteItem.tarefa.id}">
+                    <button class="btn btn-success btn-sm" type="submit">Concluir</button>
+                </form>
+                <!-- Botão para excluir tarefa -->
+                <form th:action="@{/excluir}" method="post" class="d-inline">
+                    <input type="hidden" name="id" th:value="${tarefaPendenteItem.tarefa.id}">
+                    <button class="btn btn-danger btn-sm" type="submit">Excluir</button>
+                </form>
+            </div>
+        </li>
+    </ul>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
